@@ -45,7 +45,7 @@ export interface InputBaseProps extends TextFieldProps {
   groupRef?: Ref<HTMLDivElement>;
   /** Icon component to display on the left side of the input. */
   icon?: ComponentType<HTMLAttributes<HTMLOrSVGElement>>;
-  onKeyUpFn: (d: HTMLInputElement) => void;
+  onKeyUpFn?: (d: HTMLInputElement) => void;
 }
 
 export const InputBase = ({

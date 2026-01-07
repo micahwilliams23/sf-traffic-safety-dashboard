@@ -1,10 +1,5 @@
-import {
-  latLngBounds,
-  type LatLngBounds,
-  type LatLngBoundsExpression,
-  type LatLngExpression,
-} from "leaflet";
-import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
+import { latLngBounds, type LatLngExpression } from "leaflet";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Circle,
   MapContainer,

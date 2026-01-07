@@ -13,66 +13,78 @@ interface ToggleBaseProps {
     isDisabled?: boolean;
 }
 
-export const ToggleBase = ({ className, isHovered, isDisabled, isFocusVisible, isSelected, slim, size = "sm", ...ariaSwitchProps}: ToggleBaseProps) => {
-    const styles = {
-        default: {
-            sm: {
-                root: "h-5 w-9 p-0.5",
-                switch: cx("size-4", isSelected && "translate-x-4"),
-            },
-            md: {
-                root: "h-6 w-11 p-0.5",
-                switch: cx("size-5", isSelected && "translate-x-5"),
-            },
-        },
-        slim: {
-            sm: {
-                root: "h-4 w-8",
-                switch: cx("size-4", isSelected && "translate-x-4"),
-            },
-            md: {
-                root: "h-5 w-10",
-                switch: cx("size-5", isSelected && "translate-x-5"),
-            },
-        },
-    };
+export const ToggleBase = ({
+  className,
+  isHovered,
+  isDisabled,
+  isFocusVisible,
+  isSelected,
+  slim,
+  size = "sm",
+}: ToggleBaseProps) => {
+  const styles = {
+    default: {
+      sm: {
+        root: "h-5 w-9 p-0.5",
+        switch: cx("size-4", isSelected && "translate-x-4"),
+      },
+      md: {
+        root: "h-6 w-11 p-0.5",
+        switch: cx("size-5", isSelected && "translate-x-5"),
+      },
+    },
+    slim: {
+      sm: {
+        root: "h-4 w-8",
+        switch: cx("size-4", isSelected && "translate-x-4"),
+      },
+      md: {
+        root: "h-5 w-10",
+        switch: cx("size-5", isSelected && "translate-x-5"),
+      },
+    },
+  };
 
-    const classes = slim ? styles.slim[size] : styles.default[size];
+  const classes = slim ? styles.slim[size] : styles.default[size];
 
-    return (
-        <div
-            {...onclick}
-            className={cx(
-                "cursor-pointer rounded-full bg-gray-300 outline-focus-ring transition duration-150 ease-linear",
-                isSelected && "bg-brand-solid",
-                isSelected && isHovered && "bg-brand-solid_hover",
-                isDisabled && "cursor-not-allowed bg-disabled",
-                isFocusVisible && "outline-2 outline-offset-2",
+  return (
+    <div
+      {...onclick}
+      className={cx(
+        "cursor-pointer rounded-full bg-gray-300 outline-focus-ring transition duration-150 ease-linear",
+        isSelected && "bg-brand-solid",
+        isSelected && isHovered && "bg-brand-solid_hover",
+        isDisabled && "cursor-not-allowed bg-disabled",
+        isFocusVisible && "outline-2 outline-offset-2",
 
-                slim && "ring-1 ring-secondary ring-inset",
-                slim && isSelected && "ring-transparent",
-                classes.root,
-                className,
-            )}
-        >
-            <div
-                style={{
-                    transition: "transform 0.15s ease-in-out, translate 0.15s ease-in-out, border-color 0.1s linear, background-color 0.1s linear",
-                }}
-                className={cx(
-                    "rounded-full bg-fg-white shadow-sm",
-                    isDisabled && "bg-toggle-button-fg_disabled",
+        slim && "ring-1 ring-secondary ring-inset",
+        slim && isSelected && "ring-transparent",
+        classes.root,
+        className
+      )}
+    >
+      <div
+        style={{
+          transition:
+            "transform 0.15s ease-in-out, translate 0.15s ease-in-out, border-color 0.1s linear, background-color 0.1s linear",
+        }}
+        className={cx(
+          "rounded-full bg-fg-white shadow-sm",
+          isDisabled && "bg-toggle-button-fg_disabled",
 
-                    slim && "shadow-xs",
-                    slim && "border border-toggle-border",
-                    slim && isSelected && "border-toggle-slim-border_pressed",
-                    slim && isSelected && isHovered && "border-toggle-slim-border_pressed-hover",
+          slim && "shadow-xs",
+          slim && "border border-toggle-border",
+          slim && isSelected && "border-toggle-slim-border_pressed",
+          slim &&
+            isSelected &&
+            isHovered &&
+            "border-toggle-slim-border_pressed-hover",
 
-                    classes.switch,
-                )}
-            />
-        </div>
-    );
+          classes.switch
+        )}
+      />
+    </div>
+  );
 };
 
 interface ToggleProps extends AriaSwitchProps {

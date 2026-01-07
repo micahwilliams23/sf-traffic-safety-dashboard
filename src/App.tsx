@@ -21,7 +21,7 @@ function App() {
   const [allCrashes, setAllCrashes] = useState([] as AllCrashes[]);
   const [yearlyTotals, setYearlyTotals] = useState([] as YearlyTotalYtdType[]);
   const [monthlyTotals, setMonthlyTotals] = useState([] as MonthlyTotalType[]);
-  const [showDescription, setShowDescription] = useState(true);
+  // const [showDescription, setShowDescription] = useState(true);
   const [yearlyBreakdown, setyearlyBreakdown] = useState(
     [] as YearlyBreakdownType[]
   );
