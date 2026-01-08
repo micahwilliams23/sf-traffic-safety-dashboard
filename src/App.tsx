@@ -10,13 +10,14 @@ import type {
 } from "@/types/data";
 
 import Header from "./components/Header";
-import InjuryCounter from "./components/viz/InjuryCounter";
+import InjuryCounter from "@/components/viz/InjuryCounter";
 import InjuryLinePlot from "./components/viz/InjuryLine";
 import InjuryTable from "./components/viz/InjuryTable";
 import InjuryMap from "./components/viz/InjuryMap";
 import BarsWithToggle from "./components/viz/DeathsBar";
 
 function App() {
+
   // fetch all crashes
   const [allCrashes, setAllCrashes] = useState([] as AllCrashes[]);
   const [yearlyTotals, setYearlyTotals] = useState([] as YearlyTotalYtdType[]);

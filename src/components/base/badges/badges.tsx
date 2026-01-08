@@ -1,7 +1,5 @@
 import type { MouseEventHandler, ReactNode } from "react";
 import { X as CloseX } from "@untitledui/icons";
-import { Dot } from "@/components/foundations/dot-icon";
-import { cx } from "@/utils/cx";
 import type {
   BadgeColors,
   BadgeTypeToColorMap,
@@ -11,6 +9,8 @@ import type {
   Sizes,
 } from "./badge-types";
 import { badgeTypes } from "./badge-types";
+import { Dot } from "@/components/foundations/dot-icon";
+import { cx } from "@/utils/cx";
 
 export const filledColors: Record<
   BadgeColors,

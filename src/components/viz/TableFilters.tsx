@@ -5,7 +5,7 @@ import { Select } from "@/components/base/select/select";
 import { range } from "@/utils/range";
 import { SearchSm } from "@untitledui/icons";
 import { Input } from "@/components/base/input/input";
-import type { AllCrashes, DateRange } from "@/types/data";
+import type { AllCrashes, DateRange } from "src/types/data";
 import { type Dispatch } from "react";
 import type { DateValue } from "react-aria-components";
 

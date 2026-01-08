@@ -1,8 +1,94 @@
 {
-  "hash": "fa582555",
+  "hash": "b94a10ed",
   "configHash": "688de997",
-  "lockfileHash": "89a295c1",
-  "browserHash": "c1c26b56",
-  "optimized": {},
-  "chunks": {}
+  "lockfileHash": "039912be",
+  "browserHash": "3a6f5f08",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "00747258",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "a630533f",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "22ab8eb4",
+      "needsInterop": true
+    },
+    "papaparse": {
+      "src": "../../node_modules/papaparse/papaparse.min.js",
+      "file": "papaparse.js",
+      "fileHash": "8089b4d4",
+      "needsInterop": true
+    },
+    "@untitledui/icons": {
+      "src": "../../node_modules/@untitledui/icons/dist/index.mjs",
+      "file": "@untitledui_icons.js",
+      "fileHash": "4790ca00",
+      "needsInterop": false
+    },
+    "d3": {
+      "src": "../../node_modules/d3/src/index.js",
+      "file": "d3.js",
+      "fileHash": "fcca9c65",
+      "needsInterop": false
+    },
+    "@internationalized/date": {
+      "src": "../../node_modules/@internationalized/date/dist/import.mjs",
+      "file": "@internationalized_date.js",
+      "fileHash": "7a6edc8c",
+      "needsInterop": false
+    },
+    "leaflet": {
+      "src": "../../node_modules/leaflet/dist/leaflet-src.js",
+      "file": "leaflet.js",
+      "fileHash": "6f0750a9",
+      "needsInterop": true
+    },
+    "react-leaflet": {
+      "src": "../../node_modules/react-leaflet/lib/index.js",
+      "file": "react-leaflet.js",
+      "fileHash": "b2666692",
+      "needsInterop": false
+    },
+    "@untitledui/icons/FilterLines": {
+      "src": "../../node_modules/@untitledui/icons/dist/FilterLines.mjs",
+      "file": "@untitledui_icons_FilterLines.js",
+      "fileHash": "6dd50662",
+      "needsInterop": false
+    },
+    "react-aria-components": {
+      "src": "../../node_modules/react-aria-components/dist/import.mjs",
+      "file": "react-aria-components.js",
+      "fileHash": "48738336",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-N5YWJDII": {
+      "file": "chunk-N5YWJDII.js"
+    },
+    "chunk-UEAB36YP": {
+      "file": "chunk-UEAB36YP.js"
+    },
+    "chunk-HWMK2RSU": {
+      "file": "chunk-HWMK2RSU.js"
+    },
+    "chunk-GG47EYKX": {
+      "file": "chunk-GG47EYKX.js"
+    },
+    "chunk-AOWZJ2XX": {
+      "file": "chunk-AOWZJ2XX.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
 }

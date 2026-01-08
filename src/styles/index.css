@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  color-scheme: light; /* dark; */
   color: var(--color-gray-modern-900);
   background-color: var(--color-gray-modern-25);
 

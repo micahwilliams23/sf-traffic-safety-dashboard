@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../node_modules/@untitledui/icons/dist/FilterLines.mjs"],
+  "sourcesContent": ["import*as e from\"react\";const i=({size:r=24,color:o=\"currentColor\",...t})=>e.createElement(\"svg\",{viewBox:\"0 0 24 24\",width:r,height:r,stroke:o,strokeWidth:\"2\",fill:\"none\",strokeLinecap:\"round\",strokeLinejoin:\"round\",\"aria-hidden\":\"true\",...t},e.createElement(\"path\",{d:\"M6 12h12M3 6h18M9 18h6\"}));i.displayName=\"FilterLines\";export{i as FilterLines};\n"],
+  "mappings": ";;;;;;;;AAAA,QAAgB;AAAQ,IAAM,IAAE,CAAC,EAAC,MAAK,IAAE,IAAG,OAAM,IAAE,gBAAe,GAAG,EAAC,MAAM,gBAAc,OAAM,EAAC,SAAQ,aAAY,OAAM,GAAE,QAAO,GAAE,QAAO,GAAE,aAAY,KAAI,MAAK,QAAO,eAAc,SAAQ,gBAAe,SAAQ,eAAc,QAAO,GAAG,EAAC,GAAI,gBAAc,QAAO,EAAC,GAAE,yBAAwB,CAAC,CAAC;AAAE,EAAE,cAAY;",
+  "names": []
+}
