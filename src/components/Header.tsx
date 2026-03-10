@@ -2,8 +2,9 @@ import type { AllCrashes } from "@/types/data";
 import { LinkExternal02 } from "@untitledui/icons";
 
 export default function Header({ allCrashes }: { allCrashes: AllCrashes[] }) {
-  const latestCrash = allCrashes.length > 0 ? allCrashes[0].datetime : new Date();
-
+  const latestCrash =
+    allCrashes.length > 0 ? new Date(allCrashes[0].datetime) : new Date();
+  console.log(latestCrash);
 
   return (
     <div className="flex justify-between">
@@ -24,16 +25,21 @@ export default function Header({ allCrashes }: { allCrashes: AllCrashes[] }) {
           </div>
         </div>
       </div>
-      {allCrashes.length === 0 ? <></> :
+      {allCrashes.length === 0 ? (
+        <></>
+      ) : (
         <div className="flex">
           <div className="content-end text-end bottom-0 text-sm">
-            Latest reported crash: {latestCrash?.toLocaleDateString("en-US", { dateStyle: "medium" } as Intl.DateTimeFormatOptions)}
+            Latest reported crash:{" "}
+            {latestCrash?.toLocaleDateString("en-US", {
+              dateStyle: "medium",
+            } as Intl.DateTimeFormatOptions) || ""}
             <p className="text-gray-500 text-xs">
               New injuries are reported quarterly.
             </p>
           </div>
         </div>
-      }
+      )}
     </div>
   );
 }
