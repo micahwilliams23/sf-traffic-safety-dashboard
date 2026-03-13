@@ -4,12 +4,14 @@ import { LinkExternal02 } from "@untitledui/icons";
 export default function Header({ allCrashes }: { allCrashes: AllCrashes[] }) {
   const latestCrash =
     allCrashes.length > 0 ? new Date(allCrashes[0].datetime) : new Date();
-  console.log(latestCrash);
 
   return (
     <div className="flex justify-between">
       <div className="flex">
-        {/* <img className="h-20 object-scale-down" src="https://images.squarespace-cdn.com/content/v1/634e1243add7446ca0901f58/1666061023451-5RLS1J6EJBK90M2VFX4X/logo-square.png?format=1500w" /> */}
+        <img
+          className="h-20 object-scale-down"
+          src="https://images.squarespace-cdn.com/content/v1/634e1243add7446ca0901f58/1666061023451-5RLS1J6EJBK90M2VFX4X/logo-square.png?format=1500w"
+        />
         <div className="mx-4">
           <h1 className="mb-1">SF Traffic Safety Dashboard</h1>
           <div className="flex justify-between">

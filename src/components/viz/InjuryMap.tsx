@@ -76,23 +76,19 @@ const MapPoints = ({
   };
 
   const filteredData = useMemo(() => {
-    return (
-      allCrashes
-        .map((d, i) => {
-          return { id: i.toString(), ...d };
-        })
-        // .filter((d) => d.number_killed >= 1 && d.lat != null && d.lon != null)
-        // .filter((d) => d.victim_type == victim || victim == "all")
-        .filter(
-          (d) =>
-            dateRange == null ||
-            (d.datetime >= dateRange.start.toDate("America/Los_Angeles") &&
-              d.datetime <= dateRange.end.toDate("America/Los_Angeles"))
-        )
-    );
+    return allCrashes
+      .map((d, i) => {
+        return { id: i.toString(), ...d };
+      })
+      .filter((d) => d.number_killed >= 1 && d.lat != null && d.lon != null)
+      .filter((d) => d.victim_type == victim || victim == "all")
+      .filter(
+        (d) =>
+          dateRange == null ||
+          (d.datetime >= dateRange.start.toDate("America/Los_Angeles") &&
+            d.datetime <= dateRange.end.toDate("America/Los_Angeles"))
+      );
   }, [allCrashes, victim, dateRange]);
-
-  console.log(filteredData);
 
   return (
     <>

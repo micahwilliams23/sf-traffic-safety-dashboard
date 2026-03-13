@@ -1,10 +1,9 @@
 import Papa from "papaparse";
-import type { Dispatch, SetStateAction } from "react";
+// import type { Dispatch, SetStateAction } from "react";
 
 const fetchDataFromUrl = async (
   url: string,
-  initialState: any,
-  setState: Dispatch<SetStateAction<typeof initialState>>,
+  setState: any,
 ) => {
   try {
     const response = await fetch(url);
@@ -15,10 +14,10 @@ const fetchDataFromUrl = async (
     Papa.parse(result, {
       header: true,
       dynamicTyping: true,
-      complete: (results) => {setState(results.data);}
+      complete: (results) => setState(results.data),
     } as Papa.ParseWorkerConfig<unknown> & {
-    download?: false | undefined;
-});
+      download?: false | undefined;
+    });
   } catch (err) {console.log(err)}
 };
 

@@ -22,7 +22,6 @@ function App() {
   const [allCrashes, setAllCrashes] = useState([] as AllCrashes[]);
   const [yearlyTotals, setYearlyTotals] = useState([] as YearlyTotalYtdType[]);
   const [monthlyTotals, setMonthlyTotals] = useState([] as MonthlyTotalType[]);
-  // const [showDescription, setShowDescription] = useState(true);
   const [yearlyBreakdown, setyearlyBreakdown] = useState(
     [] as YearlyBreakdownType[]
   );
@@ -43,24 +42,20 @@ function App() {
 
   // fetch yearly totals
   useEffect(() => {
-    fetchDataFromUrl(
-      urlFromBaseUrl(gids["yearly_totals"]),
-      yearlyTotals,
-      setYearlyTotals
-    );
+    fetchDataFromUrl(urlFromBaseUrl(gids["yearly_totals"]), setYearlyTotals);
     fetchDataFromUrl(
       urlFromBaseUrl(gids["all_crashes"]),
-      allCrashes,
-      setAllCrashes
+      (raw: AllCrashes[]) => {
+        const processed = raw.map((row) => {
+          row.datetime = new Date(row["ts"] * 1000);
+          return row;
+        });
+        setAllCrashes(processed);
+      }
     );
-    fetchDataFromUrl(
-      urlFromBaseUrl(gids["monthly_totals"]),
-      monthlyTotals,
-      setMonthlyTotals
-    );
+    fetchDataFromUrl(urlFromBaseUrl(gids["monthly_totals"]), setMonthlyTotals);
     fetchDataFromUrl(
       urlFromBaseUrl(gids["yearly_breakdown"]),
-      yearlyBreakdown,
       setyearlyBreakdown
     );
   }, []);
@@ -69,47 +64,41 @@ function App() {
     <div className="w-[80vw] mx-auto my-0">
       <Header allCrashes={allCrashes} />
       {/* main dashboard below */}
-      {true ? (
-        <div className="m-10">
-          Temporarily down while I make some adjustments. Sorry.
+      <>
+        <div className="grid grid-cols-4 gap-4 py-4 h-[350px]">
+          <div className="bg-stone-100 rounded-sm flex justify-center items-center col-span-1">
+            <InjuryCounter
+              yearlyTotals={yearlyTotals}
+              latestCrash={
+                allCrashes.length > 0
+                  ? new Date(allCrashes[0].datetime)
+                  : new Date()
+              }
+            />
+          </div>
+          <div
+            className="bg-stone-100 rounded-sm flex justify-center items-center col-span-3 h-full"
+            id="injury-line-plot"
+          >
+            <InjuryLinePlot monthlyTotals={monthlyTotals} />
+          </div>
         </div>
-      ) : (
-        <>
-          <div className="grid grid-cols-4 gap-4 py-4 h-[350px]">
-            <div className="bg-stone-100 rounded-sm flex justify-center items-center col-span-1">
-              <InjuryCounter
-                yearlyTotals={yearlyTotals}
-                latestCrash={
-                  allCrashes.length > 0
-                    ? new Date(allCrashes[0].datetime)
-                    : new Date()
-                }
-              />
-            </div>
-            <div
-              className="bg-stone-100 rounded-sm flex justify-center items-center col-span-3 h-full"
-              id="injury-line-plot"
-            >
-              <InjuryLinePlot monthlyTotals={monthlyTotals} />
-            </div>
+        <div className="grid grid-cols-2 gap-4 h-[50vh]">
+          <div
+            className="bg-stone-100 rounded-sm flex justify-center items-center"
+            id="map-container"
+          >
+            {/* Street Map Bubble Chart */}
+            <InjuryMap allCrashes={allCrashes} />
           </div>
-          <div className="grid grid-cols-2 gap-4 h-[50vh]">
-            <div
-              className="bg-stone-100 rounded-sm flex justify-center items-center"
-              id="map-container"
-            >
-              {/* Street Map Bubble Chart */}
-              <InjuryMap allCrashes={allCrashes} />
-            </div>
-            <div className="bg-stone-100 rounded-sm justify-center items-center">
-              <BarsWithToggle yearlyBreakdown={yearlyBreakdown} />
-            </div>
+          <div className="bg-stone-100 rounded-sm justify-center items-center">
+            <BarsWithToggle yearlyBreakdown={yearlyBreakdown} />
           </div>
-        </>
-      )}
-      {/* <div className="bg-stone-100 rounded-sm justify-center items-center mt-4 relative">
+        </div>
+      </>
+      <div className="bg-stone-100 rounded-sm justify-center items-center mt-4 relative">
         <InjuryTable allCrashes={allCrashes} />
-      </div> */}
+      </div>
       <div className="mt-8 justify-end flex content-center">
         <div className="justify-items-end">
           <span className="text-gray-400">

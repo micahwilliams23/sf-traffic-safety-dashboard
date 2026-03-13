@@ -36,11 +36,7 @@ const DeathBars = ({
     .padding(0.2);
 
   const xLabels = new Set(
-    yearlyBreakdown.map((d) => {
-      const year_str = d.year.toString();
-      if (year_str == "2025") return "'25 ytd";
-      return "'" + year_str.substring(2, 4);
-    })
+    yearlyBreakdown.map((d) => "'" + d.year.toString().substring(2, 4))
   );
 
   const colorScale = d3

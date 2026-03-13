@@ -25,6 +25,7 @@ interface YearlyTotalYtd extends YearlyTotal {
 }
 
 interface AllCrashes extends YearlyBreakdown {
+  ts: number;
   datetime: Date;
   primary_rd: string;
   secondary_rd: string;
