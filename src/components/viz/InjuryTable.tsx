@@ -140,45 +140,60 @@ const InjuryTable = ({ allCrashes }: { allCrashes: AllCrashes[] }) => {
         if (dateRange == undefined) return;
 
         const filtered = allCrashes
-            .filter(d => d.datetime >= dateRange.start.toDate("America/Los_Angeles") &&
-                d.datetime <= dateRange.end.toDate("America/Los_Angeles"))
-            .filter(d => fatalOnly ? d.number_killed > 0 : d.number_injured > 0 || d.number_killed > 0) // fatal filter
-            .filter(d => district == 'all' || d.supervisor_district == district) // supervisor district filter
-            .filter(d => victim == 'all' || d.victim_type == victim) // victim type filter
-            .filter(d => d.primary_rd.toLowerCase().match(streetFilter) || d.secondary_rd.toLowerCase().match(streetFilter)) // victim type filter
-            .map((d, i) => {
-                return {
-                    ...d,
-                    id: i // generate id
-                }
-            })
+          .filter(
+            (d) =>
+              d.datetime >= dateRange.start.toDate("America/Los_Angeles") &&
+              d.datetime <= dateRange.end.toDate("America/Los_Angeles"),
+          )
+          .filter((d) =>
+            fatalOnly
+              ? d.number_killed > 0
+              : d.number_injured > 0 || d.number_killed > 0,
+          ) // fatal filter
+          .filter((d) => district == "all" || d.supervisor_district == district) // supervisor district filter
+          .filter((d) => victim == "all" || d.victim_type == victim) // victim type filter
+          .filter(
+            (d) =>
+              d.primary_rd?.toLowerCase().match(streetFilter) ||
+              d.secondary_rd?.toLowerCase().match(streetFilter),
+          ) // victim type filter
+          .map((d, i) => {
+            return {
+              ...d,
+              id: i, // generate id
+            };
+          });
         filtered.sort((a, b) => {
-            const first = a[sortDescriptor.column as keyof typeof a];
-            const second = b[sortDescriptor.column as keyof typeof b];
-            // console.log(first,second);
+          const first = a[sortDescriptor.column as keyof typeof a];
+          const second = b[sortDescriptor.column as keyof typeof b];
 
-            // Compare numbers or booleans
-            if ((typeof first === "number" && typeof second === "number") || (typeof first === "boolean" && typeof second === "boolean")) {
-                return sortDescriptor.direction === "descending" ? second - first : first - second;
-            }
+          // Compare numbers or booleans
+          if (
+            (typeof first === "number" && typeof second === "number") ||
+            (typeof first === "boolean" && typeof second === "boolean")
+          ) {
+            return sortDescriptor.direction === "descending"
+              ? second - first
+              : first - second;
+          }
 
-            // Compare dates
-            if (typeof first === "object" && typeof second === "object") {
-                // console.log(first.getTime(), second.getTime());
-                return sortDescriptor.direction === "descending" ?
-                    second.getTime() - first.getTime() :
-                    first.getTime() - second.getTime();
-            }
+          // Compare dates
+          if (typeof first === "object" && typeof second === "object") {
+            // console.log(first.getTime(), second.getTime());
+            return sortDescriptor.direction === "descending"
+              ? second.getTime() - first.getTime()
+              : first.getTime() - second.getTime();
+          }
 
-            // Compare strings
-            if (typeof first === "string" && typeof second === "string") {
-                let cmp = first.localeCompare(second);
-                if (sortDescriptor.direction === "descending") {
-                    cmp *= -1;
-                }
-                return cmp;
+          // Compare strings
+          if (typeof first === "string" && typeof second === "string") {
+            let cmp = first.localeCompare(second);
+            if (sortDescriptor.direction === "descending") {
+              cmp *= -1;
             }
-            return 0;
+            return cmp;
+          }
+          return 0;
         });
         setFilteredData(filtered);
         setIsLoading(false);

@@ -16,9 +16,12 @@ import { Badge } from "../base/badges/badges";
 import type { BadgeColors } from "../base/badges/badge-types";
 import { DatePickerWithDefault, VictimFilter } from "./TableFilters";
 import { FilterLines } from "@untitledui/icons/FilterLines";
-import { today, type DateValue } from "@internationalized/date";
+import {
+  fromDate,
+  toCalendarDate,
+  type DateValue,
+} from "@internationalized/date";
 import type { DateRange } from "react-aria-components";
-// import type { AllCrashes } from "@/types/data";
 
 const AddSvg = () => {
   const map = useMap();
@@ -32,8 +35,8 @@ const AddSvg = () => {
       {
         lat: 37.82090404811055,
         lng: -122.34821319580078,
-      }
-    )
+      },
+    ),
   );
   return <SVGOverlay bounds={map.getBounds()} />;
 };
@@ -86,7 +89,7 @@ const MapPoints = ({
         (d) =>
           dateRange == null ||
           (d.datetime >= dateRange.start.toDate("America/Los_Angeles") &&
-            d.datetime <= dateRange.end.toDate("America/Los_Angeles"))
+            d.datetime <= dateRange.end.toDate("America/Los_Angeles")),
       );
   }, [allCrashes, victim, dateRange]);
 
@@ -189,13 +192,15 @@ const InjuryMap = ({ allCrashes }: { allCrashes: AllCrashes[] }) => {
     });
   }, []);
 
-  const now = today("America/Los_Angeles");
+  const latest = toCalendarDate(
+    fromDate(allCrashes[0].datetime, "America/Los_Angeles"),
+  );
   const [dateRange, setDateRange] = useState<{
     start: DateValue;
     end: DateValue;
   } | null>({
-    start: now.set({ year: 2014, month: 1, day: 1 }),
-    end: now,
+    start: latest.set({ year: 2014, month: 1, day: 1 }),
+    end: latest,
   });
   const [victim, setVictim] = useState("all");
 

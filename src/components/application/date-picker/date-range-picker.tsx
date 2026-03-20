@@ -61,17 +61,6 @@ export const DateRangePicker = ({
 
   const presets = useMemo(
     () => ({
-      // thisMonth: {
-      //   label: "This month",
-      //   value: { start: startOfMonth(now), end: endOfMonth(now) },
-      // },
-      // lastMonth: {
-      //   label: "Last month",
-      //   value: {
-      //     start: startOfMonth(now).subtract({ months: 1 }),
-      //     end: endOfMonth(now).subtract({ months: 1 }),
-      //   },
-      // },
       thisYear: {
         label: "YTD",
         value: { start: startOfMonth(now.set({ month: 1 })), end: now },
